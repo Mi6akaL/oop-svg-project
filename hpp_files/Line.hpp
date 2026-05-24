@@ -1,28 +1,26 @@
-#ifndef __CIRCLE_HPP
-#define __CIRCLE_HPP
+#ifndef __LINE_HPP
+#define __LINE_HPP
 #include "Shape.hpp"
-#include <cmath>
 
-class Circle : public Shape {
+class Line : public Shape {
     protected:
-        Point center;
-        double radius;
+        Point start, end;
     public:
         // Default and parameterized constructors
-        Circle();
-        Circle(const Point&, const double&, const Color&);
+        Line();
+        Line(const Point&, const Point&, const Color&);
 
         void translate(double, double) override;
         bool containsPoint(const Point&) const override;
         bool within(const Shape&) const override;
         
         std::string getType() const override;
-
+        
         virtual Shape* clone() const override;
 
         void print(std::ostream&) const override;
-
 };
+
 
 
 #endif

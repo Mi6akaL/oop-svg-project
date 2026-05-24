@@ -1,23 +1,21 @@
-#ifndef __CIRCLE_HPP
-#define __CIRCLE_HPP
+#ifndef __POLYGON_HPP
+#define __POLYGON_HPP
 #include "Shape.hpp"
-#include <cmath>
 
-class Circle : public Shape {
+class Polygon : public Shape {
     protected:
-        Point center;
-        double radius;
+        std::vector<Point> points;
     public:
         // Default and parameterized constructors
-        Circle();
-        Circle(const Point&, const double&, const Color&);
+        Polygon();
+        Polygon(const std::vector<Point>&, const Color&);
 
         void translate(double, double) override;
         bool containsPoint(const Point&) const override;
         bool within(const Shape&) const override;
         
         std::string getType() const override;
-
+        
         virtual Shape* clone() const override;
 
         void print(std::ostream&) const override;

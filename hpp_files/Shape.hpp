@@ -1,6 +1,8 @@
 #ifndef __SHAPE_HPP
 #define __SHAPE_HPP
 #include <string>
+#include <iostream>
+#include <vector>
 #include "ColorManager.hpp"
 
 struct Point {

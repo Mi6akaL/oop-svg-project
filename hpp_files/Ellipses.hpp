@@ -1,28 +1,28 @@
-#ifndef __CIRCLE_HPP
-#define __CIRCLE_HPP
+#ifndef __ELLIPSES_HPP
+#define __ELLIPSES_HPP
 #include "Shape.hpp"
-#include <cmath>
 
-class Circle : public Shape {
+class Ellipse : public Shape {
     protected:
         Point center;
-        double radius;
+        double radius_x, radius_y;
     public:
         // Default and parameterized constructors
-        Circle();
-        Circle(const Point&, const double&, const Color&);
+        Ellipse();
+        Ellipse(const Point&, double, double, const Color&);
 
         void translate(double, double) override;
         bool containsPoint(const Point&) const override;
         bool within(const Shape&) const override;
         
         std::string getType() const override;
-
+        
         virtual Shape* clone() const override;
 
         void print(std::ostream&) const override;
 
 };
+
 
 
 #endif

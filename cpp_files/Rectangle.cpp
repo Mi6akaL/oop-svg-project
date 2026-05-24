@@ -43,7 +43,7 @@ void Rectangle::print(std::ostream& os) const {
        << starting_point.y << " " 
        << width << " " 
        << height << " " 
-       << color.toSvgFormat();
+       << color.colorToSVG();
 }
 
 
