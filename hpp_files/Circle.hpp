@@ -20,6 +20,7 @@ class Circle : public Shape {
 
         virtual Shape* clone() const override;
 
+        std::string toSVGtag() const override;
         void print(std::ostream&) const override;
 
 };

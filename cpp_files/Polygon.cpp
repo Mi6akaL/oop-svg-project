@@ -42,6 +42,15 @@ Shape* Polygon::clone() const {
     return new Polygon(*this);
 }
 
+std::string Polygon::toSVGtag() const {
+    std::string pts;
+    for (const Point& p : points)
+        pts += std::to_string(p.x) + "," + std::to_string(p.y) + " ";
+
+    return "<polygon points=\"" + pts + 
+           "\" fill=\""         + color.colorToSVG() + "\" />";
+}
+
 void Polygon::print(std::ostream& os) const {
     os << "polygon " 
        << points.size() << " ";

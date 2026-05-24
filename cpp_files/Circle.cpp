@@ -39,6 +39,13 @@ Shape* Circle::clone() const {
     return new Circle(*this);
 }
 
+std::string Circle::toSVGtag() const {
+    return "<circle cx=\"" + std::to_string(center.x) + 
+           "\" cy=\""      + std::to_string(center.y) + 
+           "\" r=\""       + std::to_string(radius)   + 
+           "\" fill=\""    + color.colorToSVG()       + "\" />";
+}
+
 void Circle::print(std::ostream& os) const {
     os << "circle " 
        << center.x << " " 

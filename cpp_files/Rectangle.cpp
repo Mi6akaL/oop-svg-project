@@ -37,6 +37,14 @@ Shape* Rectangle::clone() const {
     return new Rectangle(*this);
 }
 
+std::string Rectangle::toSVGtag() const {
+    return "<rect x=\""    + std::to_string(starting_point.x) + 
+           "\" y=\""       + std::to_string(starting_point.y) + 
+           "\" width=\""   + std::to_string(width)            + 
+           "\" height=\""  + std::to_string(height)           + 
+           "\" fill=\""    + color.colorToSVG()               + "\" />";
+}
+
 void Rectangle::print(std::ostream& os) const {
     os << "rectangle " 
        << starting_point.x << " " 

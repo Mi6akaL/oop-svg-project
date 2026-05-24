@@ -39,6 +39,9 @@ class Shape {
         // get the type of the shape as a string
         virtual std::string getType() const = 0;
 
+        // Convert the printable shape to an SVG tag string
+        virtual std::string toSVGtag() const = 0;
+
         // print the shape's details
         virtual void print(std::ostream&) const = 0;
 

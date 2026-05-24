@@ -35,6 +35,14 @@ Shape* Ellipse::clone() const {
     return new Ellipse(*this);
 }
 
+std::string Ellipse::toSVGtag() const {
+    return "<ellipse cx=\"" + std::to_string(center.x) + 
+           "\" cy=\""       + std::to_string(center.y) + 
+           "\" rx=\""       + std::to_string(radius_x) + 
+           "\" ry=\""       + std::to_string(radius_y) + 
+           "\" fill=\""     + color.colorToSVG()       + "\" />";
+}
+
 void Ellipse::print(std::ostream& os) const {
     os << "ellipse " 
        << center.x << " " 

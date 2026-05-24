@@ -37,6 +37,14 @@ Shape* Line::clone() const {
     return new Line(*this);
 }
 
+std::string Line::toSVGtag() const {
+    return "<line x1=\""  + std::to_string(start.x) + 
+           "\" y1=\""     + std::to_string(start.y) + 
+           "\" x2=\""     + std::to_string(end.x)   + 
+           "\" y2=\""     + std::to_string(end.y)   + 
+           "\" stroke=\"" + color.colorToSVG()      + "\" />";
+}
+
 void Line::print(std::ostream& os) const {
     os << "line " 
        << start.x << " " 
