@@ -2,14 +2,14 @@
 #define __RECTANGLE_HPP
 #include "Shape.hpp"
 
-class Rectangle : public Shape {
+class Rect : public Shape {
     protected:
         Point starting_point;
         double width, height;
     public:
         // Default and parameterized constructors
-        Rectangle();
-        Rectangle(const Point&, double, double, const Color&);
+        Rect();
+        Rect(const Point&, double, double, const Color&);
 
         void translate(double, double) override;
         bool containsPoint(const Point&) const override;
