@@ -1,9 +1,9 @@
-#include "../hpp_files/SVGparser.hpp"
-#include "../hpp_files/Circle.hpp"
-#include "../hpp_files/Rectangle.hpp"
-#include "../hpp_files/Ellipses.hpp"
-#include "../hpp_files/Line.hpp"
-#include "../hpp_files/Polygon.hpp"
+#include "../include/SVGparser.hpp"
+#include "../include/Circle.hpp"
+#include "../include/Rect.hpp"
+#include "../include/Ellipses.hpp"
+#include "../include/Line.hpp"
+#include "../include/Polygon.hpp"
 
 #include <sstream>
 #include <fstream>

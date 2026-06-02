@@ -1,4 +1,4 @@
-#include "../hpp_files/ColorManager.hpp"
+#include "../include/ColorManager.hpp"
 #include <algorithm>
 #include <sstream>
 #include <stdexcept>

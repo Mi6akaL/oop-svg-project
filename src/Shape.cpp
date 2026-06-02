@@ -1,4 +1,4 @@
-#include "../hpp_files/Shape.hpp"
+#include "../include/Shape.hpp"
 
 Shape::Shape() : color(BLACK) {}
 Shape::Shape(const Color& color_) : color(color_) {}

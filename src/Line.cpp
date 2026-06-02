@@ -1,4 +1,4 @@
-#include "../hpp_files/Line.hpp"
+#include "../include/Line.hpp"
 #include <cmath>
 
 Line::Line() : start({0, 0}), end({1, 1}), Shape(BLACK) {}

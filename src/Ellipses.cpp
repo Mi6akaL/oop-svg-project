@@ -1,4 +1,4 @@
-#include "../hpp_files/Ellipses.hpp"
+#include "../include/Ellipses.hpp"
 
 Ellipse::Ellipse() : center({0, 0}), radius_x(1), radius_y(1), Shape(BLACK) {}
 Ellipse::Ellipse(const Point& center_, double radius_x_, double radius_y_, const Color& color_) 

@@ -29,6 +29,7 @@ class ShapeManager {
         void translate (int index, double dx, double dy);
         void translate (double dx, double dy);
         void within    (int index);
+        void within    (const std::string& type, std::vector<std::string>& args);
 };
 
 #endif

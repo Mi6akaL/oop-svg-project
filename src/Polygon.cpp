@@ -1,4 +1,4 @@
-#include "../hpp_files/Polygon.hpp"
+#include "../include/Polygon.hpp"
 
 Polygon::Polygon() : points({{0, 0}, {1, 0}, {1, 1}}), Shape(BLACK) {}
 

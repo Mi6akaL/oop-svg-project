@@ -1,5 +1,5 @@
-#include "../hpp_files/Rectangle.hpp"
-#include "../hpp_files/ColorManager.hpp"
+#include "../include/Rect.hpp"
+#include "../include/ColorManager.hpp"
 #include <iostream>
 
 Rect::Rect() : starting_point({0, 0}), width(1), height(1), Shape(BLACK) {}
