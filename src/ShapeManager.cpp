@@ -29,6 +29,12 @@ void ShapeManager::open(const std::string& file) {
 }
 
 void ShapeManager::close() {
+
+    if (filename.empty()) {
+        std::cout << "No file is currently open. Use 'open <file>' to open an SVG file.\n";
+        return;
+    }
+
     std::string closedFile = filename;
     for (Shape* s : shapes) delete s;
     shapes.clear();
@@ -49,6 +55,10 @@ void ShapeManager::saveas(const std::string& file) {
     SVGParser::save(file, shapes);
     filename = file;
     std::cout << "Successfully saved as " << filename << ".\n";
+}
+
+bool ShapeManager::hasOpenFile() const {
+    return !filename.empty();
 }
 
 void ShapeManager::print() {
@@ -185,6 +195,17 @@ void ShapeManager::within(int index) {
 }
 
 void ShapeManager::within(const std::string& type, std::vector<std::string>& args) {
+
+    if (type == "rectangle" && args.size() != 4) {
+        std::cout << "Usage: within rectangle <x> <y> <width> <height>\n";
+        return;
+    }
+
+    if (type == "circle" && args.size() != 3) {
+        std::cout << "Usage: within circle <cx> <cy> <r>\n";
+        return;
+    }
+
     Shape* region = nullptr;
 
     if (type == "rectangle") {

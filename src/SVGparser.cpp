@@ -9,6 +9,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <algorithm>
+#include <filesystem>
 
 // Helper function : Finds the value of an attribute in an SVG tag string.
 // Returns "" if attribute is not found
@@ -99,8 +100,19 @@ Shape* SVGParser::parsePolygon(const std::string& tag) {
 
 std::vector<Shape*> SVGParser::load(const std::string& filename) {
     std::ifstream file(filename);
-    if (!file.is_open())
-        throw std::runtime_error("Could not open file: " + filename);
+    if (!file.is_open()) {
+        std::ofstream create(filename);
+
+        create <<
+            R"(<?xml version="1.0" standalone="no"?>
+            <svg xmlns="http://www.w3.org/2000/svg">
+            </svg>)";
+        
+        create.close();
+
+        file.open(filename);
+    }
+        
 
     std::string content((std::istreambuf_iterator<char>(file)),
                          std::istreambuf_iterator<char>());
@@ -128,7 +140,10 @@ std::vector<Shape*> SVGParser::load(const std::string& filename) {
             if (lower.find("<line ")    != std::string::npos) shapes.push_back(parseLine(tag));
             if (lower.find("<polygon ") != std::string::npos) shapes.push_back(parsePolygon(tag));
         } catch (const std::exception& e) {
-            // Skip invalid shapes and continue parsing
+            for (Shape* s : shapes)
+                delete s;
+            
+            throw std::runtime_error(std::string("Invalid SVG file: ") + e.what());
         }
     }
 

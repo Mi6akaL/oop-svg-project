@@ -21,6 +21,7 @@ class ShapeManager {
         void close  ();
         void save   ();
         void saveas (const std::string& filename);
+        bool hasOpenFile() const;
 
         // Shape operations
         void print     ();

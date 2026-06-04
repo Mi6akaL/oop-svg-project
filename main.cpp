@@ -37,6 +37,12 @@ int main() {
 
         std::string cmd = tokens[0];
 
+        if (cmd != "open" && cmd != "help" && cmd != "exit" && !manager.hasOpenFile()) {
+
+            std::cout << "No file is currently open. Use 'open <file>' to open an SVG file.\n";
+            continue;
+        }
+
         try {
             if (cmd == "open") {
                 if (tokens.size() != 2) { std::cout << "Usage: open <file>\n"; continue; }
@@ -67,20 +73,34 @@ int main() {
 
             } else if (cmd == "translate") {
 
-                if (tokens.size() == 3) {
-                    double dy = std::stod(tokens[1]);
-                    double dx = std::stod(tokens[2]);
-                    manager.translate(dx, dy);
-                    std::cout << "Successfully translated all shapes.\n";
-                } else if (tokens.size() == 4) {
-                    int index = std::stoi(tokens[1]);
-                    double dy = std::stoi(tokens[2]);
-                    double dx = std::stoi(tokens[3]);
-                    manager.translate(index, dx, dy);
-                    std::cout << "Successfully translated shape at index " << index << ".\n";
-                } else {
-                    std::cout << "Usage: translate [<n>] vertical=<dx> horizontal=<dy>\n"; 
+                int index = -1;
+
+                double vertical = 0;
+                double horizontal = 0;
+
+                int start = 1;
+
+                if (tokens.size() == 4 && isNumber(tokens[1])) {
+                    index = std::stoi(tokens[1]);
+                    start = 2;
                 }
+
+                for (int i = start; i < (int)tokens.size(); i++) {
+                    
+                    if (tokens[i].rfind("vertical=", 0) == 0) {
+                        vertical = std::stod(tokens[i].substr(9));
+
+                    } else if (tokens[i].rfind("horizontal=", 0) == 0) {
+                        horizontal = std::stod(tokens[i].substr(11));
+                    }
+                }
+
+                if (index == -1) {
+                    manager.translate(horizontal, vertical);
+                } else {
+                    manager.translate(index, horizontal, vertical);
+                }
+
 
             } else if (cmd == "within") {
                 if (tokens.size() < 2) { std::cout << "Usage: within <type> <params...>\n"; continue; }
